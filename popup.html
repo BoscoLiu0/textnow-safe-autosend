@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TextNow Weekly Sender</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <h1>TextNow 每周短信</h1>
+      <p class="intro">配置只保存在这台 Chrome，不会上传到 GitHub。</p>
+
+      <form id="settings-form">
+        <label>
+          收件号码
+          <input
+            id="recipient"
+            name="recipient"
+            type="tel"
+            inputmode="tel"
+            autocomplete="off"
+            placeholder="+1 858 123 4567"
+            required
+          >
+        </label>
+
+        <label>
+          短信内容
+          <textarea
+            id="message"
+            name="message"
+            maxlength="500"
+            rows="3"
+            required
+          ></textarea>
+        </label>
+
+        <fieldset>
+          <legend>每周运行时间</legend>
+          <div class="schedule-row">
+            <label>
+              星期
+              <select id="weekday" name="weekday">
+                <option value="0">星期日</option>
+                <option value="1">星期一</option>
+                <option value="2">星期二</option>
+                <option value="3">星期三</option>
+                <option value="4">星期四</option>
+                <option value="5">星期五</option>
+                <option value="6">星期六</option>
+              </select>
+            </label>
+
+            <label>
+              时间
+              <input id="time" name="time" type="time" required>
+            </label>
+          </div>
+        </fieldset>
+
+        <button id="save" type="submit">保存设置</button>
+        <button id="test-send" class="secondary" type="button">
+          立即测试发送
+        </button>
+      </form>
+
+      <section aria-live="polite">
+        <h2>最近状态</h2>
+        <p id="status">尚未设置。</p>
+        <p id="next-run" class="muted"></p>
+      </section>
+
+      <p class="warning">
+        Chrome 必须运行且 TextNow 必须保持登录。扩展不会绕过 CAPTCHA。
+      </p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
