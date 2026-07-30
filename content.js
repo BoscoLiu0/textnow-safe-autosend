@@ -1,5 +1,4 @@
 const CAPTCHA_PATTERN = /verify you are human|press and hold|captcha/i;
-const LOGIN_PATTERN = /what is your email|log in|sign in/i;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -43,9 +42,7 @@ function pageHasCaptcha() {
 
 function pageRequiresLogin() {
   if (/\/login(?:[/?#]|$)/i.test(location.pathname)) return true;
-  if (visibleElements('input[type="password"]').length > 0) return true;
-  const text = document.body?.innerText?.slice(0, 2000) ?? "";
-  return LOGIN_PATTERN.test(text) && !/type a message/i.test(text);
+  return visibleElements('input[type="password"]').length > 0;
 }
 
 function findByAccessibleName(pattern) {
