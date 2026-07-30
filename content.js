@@ -134,16 +134,21 @@ function currentHeaderMatches(recipient) {
   const target = normalizeDigits(recipient);
   if (target.length !== 10) return false;
 
-  const candidates = visibleElements(
-    'header,h1,h2,h3,[role="heading"],[class*="header" i],div,span,p',
-  );
+  const messageBox = findMessageBox();
+  if (!messageBox) return false;
+
+  const messageBoxRect = messageBox.getBoundingClientRect();
+  const panelLeft = Math.max(0, messageBoxRect.left - 140);
+  const candidates = visibleElements("body *");
+
   return candidates.some((element) => {
     const rect = element.getBoundingClientRect();
     const text = element.textContent?.trim() ?? "";
     if (
-      rect.top < 60 ||
-      rect.top > 240 ||
-      rect.left < Math.max(240, window.innerWidth * 0.25) ||
+      rect.top > Math.min(280, messageBoxRect.top) ||
+      rect.left < panelLeft ||
+      rect.right > messageBoxRect.right + 140 ||
+      text.length < 10 ||
       text.length > 40
     ) {
       return false;
