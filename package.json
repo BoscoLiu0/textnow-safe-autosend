@@ -1,0 +1,21 @@
+{
+  "name": "textnow-safe-autosend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local, single-recipient TextNow keep-alive helper with a persistent browser profile.",
+  "scripts": {
+    "setup-login": "node send-textnow.mjs --setup",
+    "send": "node send-textnow.mjs",
+    "send:headed": "node send-textnow.mjs --headed",
+    "schedule": "node install-macos-schedule.mjs",
+    "check": "node --check send-textnow.mjs && node --check install-macos-schedule.mjs && node --check src/lib.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright-core": "1.62.1"
+  }
+}
