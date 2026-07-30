@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "TextNow Weekly Sender",
+  "version": "2.0.0",
+  "description": "Send one low-frequency keep-alive text from an already signed-in TextNow tab.",
+  "permissions": [
+    "alarms",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.textnow.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.textnow.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "TextNow Weekly Sender",
+    "default_popup": "popup.html"
+  }
+}
