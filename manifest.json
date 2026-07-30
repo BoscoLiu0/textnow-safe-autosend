@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TextNow Weekly Sender",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Send one low-frequency keep-alive text from an already signed-in TextNow tab.",
   "permissions": [
     "alarms",
