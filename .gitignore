@@ -1,5 +1,3 @@
-node_modules/
-config.json
-.textnow-safe-autosend/
-*.log
 .DS_Store
+*.zip
+node_modules/
