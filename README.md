@@ -1,0 +1,1 @@
+# textnow-safe-autosend
